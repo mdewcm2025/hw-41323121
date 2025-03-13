@@ -51,9 +51,38 @@
 <p>2. 期中協同專案執行、簡報與報告 (三人一組) (30%)</p>
 <p style="padding-left: 30px;">專案題目: 利用 Copilot 解析 <a href="https://mde.tw/reeborg/world.html">Reeborg's world</a> (<a href="https://github.com/mdecycu/reeborg">原始碼</a>)</p>
 <h1>Final</h1>
-<h1>Brython</h1>
 <p>3. 期末協同專案執行、簡報與報告 (三人一組) (30%)</p>
 <p style="padding-left: 30px;"><span>專案題目: 網際內容管理架構下的 <a href="https://mde.tw/reeborg/world.html">Reeborg's world</a> (<a href="https://github.com/mdecycu/reeborg">原始碼</a>)<br/></span></p>
 <p style="padding-left: 60px;">利用 uwsgi 配置分組學員執行 cmsimde 動態內容管理系統編輯</p>
 <p style="padding-left: 60px;">設法將 <a href="https://mde.tw/reeborg/world.html">Reeborg's world</a> (<a href="https://github.com/mdecycu/reeborg">原始碼</a>) 與 cmsimde 網際內容管理系統整合</p>
 <p></p>
+<h1>Brython</h1>
+<!-- 導入 Brython 程式庫 -->
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<!-- 啟動 Brython -->
+<script>
+window.onload = function() {
+    brython({debug: 1, pythonpath: ['/static/', '../downloads/py/']});
+}
+</script>
+<!-- 定義畫布位置 -->
+<div id="brython_div"></div>
+<!-- 利用 Brython 繪圖 -->
+<script type="text/python">
+from browser import html
+from browser import document as doc
+
+# 利用 html 建立 canvas 超文件物件
+canvas = html.CANVAS(width=400, height=400)
+brython_div = doc["brython_div"]
+brython_div <= canvas
+ctx = canvas.getContext("2d")
+
+ctx.lineWidth = 1
+ctx.strokeStyle = 'blue'
+ctx.beginPath()
+ctx.moveTo(10, 10)
+ctx.lineTo(100, 100)
+ctx.stroke()
+</script>
